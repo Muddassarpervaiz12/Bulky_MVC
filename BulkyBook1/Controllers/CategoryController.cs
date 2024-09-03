@@ -23,8 +23,6 @@ namespace BulkyBook1.Controllers
         {
             return View();
         }
-
-
         //For Create button when click on create button then this post create method call
         [HttpPost]
         public IActionResult Create(Category obj)
@@ -41,6 +39,36 @@ namespace BulkyBook1.Controllers
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+
+
+        //for edit category View, click on edit button
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            // use for getting category 
+            Category? cateogryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+            if (cateogryFromDb == null) {
+                return NotFound();
+                    }
+
+            return View(cateogryFromDb);
+        }
+        //For edit button when click on update button then this post create method call
+        [HttpPost]
+        public IActionResult Edit(Category obj)
+      {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");  
             }
             return View(obj);
         }
