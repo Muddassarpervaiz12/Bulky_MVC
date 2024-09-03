@@ -4,7 +4,7 @@
     <div class="border p-4 mt-5">
         <div class="row pb-4">
             <h2 class="text-primary">
-                Edit Category
+                Delete Category
             </h2>
             <hr />
         </div>
@@ -12,19 +12,17 @@
         @* <div asp-validation-summary="All"></div>   this code is use when you want to display all error message on top *@
         <div class="mb-3 row p-1">
             <label class="p-0" asp-for="Name"></label>
-            <input asp-for="Name" type="text" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <input asp-for="Name" disabled type="text" class="form-control" />
         </div>
 
         <div class="mb-3 row p-1">
             <label class="p-0" asp-for="DisplayOrder"></label>
-            <input asp-for="DisplayOrder" type="text" class="form-control" />
-            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+            <input asp-for="DisplayOrder" disabled type="text" class="form-control" />
         </div>
 
         <div class="row">
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-outline-primary border form-control">Update</button>
+                <button type="submit" class="btn btn-outline-danger border form-control">Delete</button>
             </div>
             <div class="col-6 col-md-3">
                 <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">
@@ -36,4 +34,3 @@
 
     </div>
 </form>
-

@@ -38,6 +38,7 @@ namespace BulkyBook1.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Create category successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -68,9 +69,44 @@ namespace BulkyBook1.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category edit successfully";
                 return RedirectToAction("Index");  
             }
             return View(obj);
+        }
+
+
+
+
+
+        //for edit category View, click on edit button
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            // use for getting category 
+            Category? cateogryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+            if (cateogryFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(cateogryFromDb);
+        }
+        //For edit button when click on update button then this post create method call
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+            if (obj == null) {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj);
+            _db.SaveChanges();
+            TempData["success"] = "Category delete successfully";
+            return RedirectToAction("Index");
         }
     }
 }
