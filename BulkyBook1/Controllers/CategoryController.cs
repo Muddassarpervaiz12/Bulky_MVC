@@ -11,6 +11,8 @@ namespace BulkyBook1.Controllers
         {
             _db = db;
         }
+
+        //for display or view the data
         public IActionResult Index()
         {
             //getting listod category form database/table
