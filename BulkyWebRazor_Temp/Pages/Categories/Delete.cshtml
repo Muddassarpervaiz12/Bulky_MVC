@@ -1,0 +1,37 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.DeleteModel
+<form method="post">
+    <input asp-for="Category.Id" hidden />
+    <div class="border p-4 mt-5">
+        <div class="row pb-4">
+            <h2 class="text-primary">
+                Delete Category
+            </h2>
+            <hr />
+        </div>
+
+        @* <div asp-validation-summary="All"></div>   this code is use when you want to display all error message on top *@
+        <div class="mb-3 row p-1">
+            <label class="p-0" asp-for="Category.Name"></label>
+            <input asp-for="Category.Name" disabled type="text" class="form-control" />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label class="p-0" asp-for="Category.DisplayOrder"></label>
+            <input asp-for="Category.DisplayOrder" disabled type="text" class="form-control" />
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-outline-danger border form-control">Delete</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-page="/categories/index" class="btn btn-outline-secondary border form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+        @*<partial name="_ValidationScriptsPartial" /> also use like this in master page but we write script in that so we use below method *@
+
+    </div>
+</form>
